@@ -1,3 +1,4 @@
+//Initialize the Required modules
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -26,7 +27,7 @@ app.use(cors({
 app.use(express.json());
 app.use(morgan('dev'));
 
-// ✅ FIXED: Serve uploaded files (PDF FIX APPLIED HERE)
+// FIXED: Serve uploaded files (PDF FIX APPLIED HERE)
 app.use(
   '/uploads',
   express.static(uploadDir, {
@@ -51,7 +52,7 @@ const storage = multer.diskStorage({
     cb(null, uniqueName);
   }
 });
-
+//File Type Validation
 const fileFilter = (req, file, cb) => {
   const allowedMimeTypes = [
     'image/jpeg',
